@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>True or False</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        background-color: #f0f0f0;
+      }
+
+      #gif {
+        display: block;
+      }
+      #true,
+      #false {
+        font-size: 16px;
+        padding: 10px 20px;
+        margin: 10px;
+        cursor: pointer;
+        background-color: #cb0e40;
+        color: white;
+        border: none;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <img id="gif" src="doggo.gif" alt="GIF" width="300" height="300" />
+    <h1>Will you be my valentine 🫶🏻🫶🏻?</h1>
+    <button id="true">YES</button>
+    <button id="false">No, u are too ugly</button>
+    <div id="message"></div>
+    <script>
+      const trueButton = document.getElementById("true");
+      const falseButton = document.getElementById("false");
+      const messageDiv = document.getElementById("message");
+      let falseButtonTexts = ["No, you are ugly!", "Don't be so rude", "Ayo lah :(", "Pleaseeee", "plisplisplisplis"];
+      let buttonSize = 16;
+      let falseClickCount = 0;
+
+      falseButton.onclick = () => {
+        if (falseClickCount < falseButtonTexts.length) {
+          falseButton.textContent = falseButtonTexts[falseClickCount++];
+        } else {
+          falseClickCount = 0; // Reset or keep at max
+        }
+        buttonSize += 65; // Increase font size for 'true' button
+        trueButton.style.fontSize = `${buttonSize}px`;
+      };
+
+      trueButton.onclick = () => {
+        trueButton.style.display = "none";
+        falseButton.style.display = "none";
+        messageDiv.innerHTML = "<p>YEAYYYY, Suksmaaaa. (Tidak ada unsur pemaksaan)</p>";
+        falseButton.textContent = "False";
+        falseClickCount = 0;
+      };
+    </script>
+  </body>
+</html>
